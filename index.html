@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otobüs İstek</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="info-section">
+            <h1>Otobüs İstek Bilgileri</h1>
+            <p>Merhaba Hocam, 👋<br>VİP Taksi boykotuyla birlikte AŞTİ’ye gidiş dahil yeni toplu taşım yolları için ABB’den topluca istekte bulunacağız. Yapılacaklar çok kolay:</p>
+            <ul>
+                <li>Aşağıdaki kırmızı metni tıklayarak kopyala.</li>
+                <li><a href="https://baskent153.ankara.bel.tr/Basvuru/1">Başkent153'e başvur.</a></li>
+            </ul>
+            <p>💖 🚌 🚎 🚍</p>
+            <p><i><b>Başvururken ilçe, mahalle ve sokak bilgisi girmenize gerek yoktur.</b> Girmek istiyorsanız "Üniversiteler Mahallesi" veya "İşçi Blokları Mahallesi" kullanabilirsiniz.</i></p>
+        </div>
+
+        <div class="copyable-section">
+            <div class="copy-icon">
+                <i class="fas fa-copy"></i>
+            </div>
+            <div class="copyable-content">
+                <p>Sayın Yetkili,<br>ODTÜ’den AŞTİ’ye ve İşçi Blokları dahil çeşitli mahallelere ulaşımda zorluk yaşıyoruz. 132, 136 ve 419 hatlı EGO otobüslerinin ODTÜ içerisindeki 10772, 12604 ve 13174 numaralı olan “ÇARŞI”, “ODTÜ KÜLTÜR VE KONGRE MERKEZİ” ve “BANKALAR” duraklarından geçmeleri isteğimi arz ederim.<br>Saygılarımla.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.copyable-section').addEventListener('click', function() {
+            const text = this.querySelector('.copyable-content p').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const icon = this.querySelector('.copy-icon i');
+                icon.classList.remove('fa-copy');
+                icon.classList.add('fa-check');
+                setTimeout(() => {
+                    icon.classList.remove('fa-check');
+                    icon.classList.add('fa-copy');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html> 
