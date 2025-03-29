@@ -11,7 +11,7 @@
     <div class="container">
         <div class="info-section">
             <h1>Otobüs İstek Bilgileri</h1>
-            <p>Merhaba Hocam, 👋<br>VİP Taksi boykotuyla birlikte AŞTİ’ye gidiş dahil yeni toplu taşım yolları için ABB’den topluca istekte bulunacağız. Yapılacaklar çok kolay:</p>
+            <p>Merhaba Hocam, 👋<br>VİP Taksi boykotuyla birlikte AŞTİ'ye gidiş dahil yeni toplu taşım yolları için ABB'den topluca istekte bulunacağız. Yapılacaklar çok kolay:</p>
             <ul>
                 <li>Aşağıdaki <span style="color: var(--soft-red)">kırmızı metni</span> tıklayarak kopyala.</li>
                 <li><a href="https://baskent153.ankara.bel.tr/Basvuru/1">Başkent153'e başvur.</a></li>
@@ -25,7 +25,7 @@
                 <i class="fas fa-copy"></i>
             </div>
             <div class="copyable-content">
-                <p>Sayın Yetkili,<br>ODTÜ’den AŞTİ’ye ve İşçi Blokları dahil çeşitli mahallelere ulaşımda zorluk yaşıyoruz. 132, 136 ve 419 hatlı EGO otobüslerinin ODTÜ içerisindeki 10772, 12604 ve 13174 numaralı olan “ÇARŞI”, “ODTÜ KÜLTÜR VE KONGRE MERKEZİ” ve “BANKALAR” duraklarından geçmeleri isteğimi arz ederim.<br>Saygılarımla.</p>
+                <p>Sayın Yetkili,<br> ODTÜ'den AŞTİ'ye ve İşçi Blokları dahil çeşitli mahallelere ulaşımda zorluk yaşıyoruz. 132, 136 ve 419 hatlı EGO otobüslerinin ODTÜ içerisindeki 10772, 12604 ve 13174 numaralı olan "ÇARŞI", "ODTÜ KÜLTÜR VE KONGRE MERKEZİ" ve "BANKALAR" duraklarından geçmeleri isteğimi arz ederim.<br> Saygılarımla.</p>
             </div>
         </div>
 
@@ -37,7 +37,12 @@
 
     <script>
         document.querySelector('.copyable-section').addEventListener('click', function() {
-            const text = this.querySelector('.copyable-content p').textContent;
+            const content = this.querySelector('.copyable-content p');
+            const text = content.innerHTML
+                .replace(/<br\s*\/?>/gi, '\n')  // Replace all types of <br> tags with newlines
+                .replace(/<[^>]*>/g, '')        // Remove any other HTML tags
+                .trim();                        // Remove any extra whitespace
+            
             navigator.clipboard.writeText(text).then(() => {
                 const icon = this.querySelector('.copy-icon i');
                 icon.classList.remove('fa-copy');
@@ -46,6 +51,8 @@
                     icon.classList.remove('fa-check');
                     icon.classList.add('fa-copy');
                 }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
             });
         });
     </script>
