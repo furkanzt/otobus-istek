@@ -96,7 +96,7 @@ body {
 
 .copyable-content p {
     color: var(--soft-red);
-    font-size: 1.1rem;
+    font-size: 0.95rem;
 }
 
 /* Responsive Design */
@@ -132,6 +132,6 @@ body {
     }
 
     .copyable-content p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 } 
